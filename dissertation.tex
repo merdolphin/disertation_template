@@ -1,0 +1,105 @@
+\NeedsTeXFormat{LaTeX2e}[1997/12/01]
+\documentclass[a4paper]{report}
+\usepackage{achemso}
+\setkeys{acs}{usetitle = true}
+
+\usepackage{minitoc}
+\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{sidecap}
+\usepackage{wrapfig}
+%\usepackage{subfig}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{threeparttable}
+\usepackage[toc,page]{appendix}
+\usepackage{microtype} 
+\usepackage{pdfpages}
+
+
+\usepackage{glossaries}
+\renewcommand*{\glossaryentrynumbers}[1]{} % To remove the page number
+\makeglossaries
+
+
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+
+\usepackage{hyperref}
+\hypersetup{
+    %colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+
+\newcommand{\units}[2]{#1\mathit{\;#2}}
+%% examples:
+%%  \units{10}{m/s}
+%%  \units{3.14}
+
+\newcommand*\chaptertoc[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+
+
+\makeatletter
+\newcommand*{\citenst}[2][]{%
+  \begingroup
+  \let\NAT@mbox=\mbox
+  \let\@cite\NAT@citenum
+  \let\NAT@space\NAT@spacechar
+  \let\NAT@super@kern\relax
+  \renewcommand\NAT@open{[}%
+  \renewcommand\NAT@close{]}%
+  %\citet[#1]{#2}%
+  \cite[#1]{#2}
+  \endgroup
+}
+\makeatother
+
+
+
+
+\begin{document}
+
+\pagenumbering{roman}
+\include{titlepage}
+\include{abstract}
+\tableofcontents \addcontentsline{toc}{chapter}{Contents}
+%\include{acknowledgements}
+\listoffigures \addcontentsline{toc}{chapter}{List of Figures}
+\listoftables \addcontentsline{toc}{chapter}{List of Tables}
+\include{nomenclature}
+
+\pagenumbering{arabic}
+\include{introduction}
+\include{ADintro}
+\include{aggregation}
+%\include{summary}
+\include{appendix}
+%\appendix 
+%\addappheadtotoc
+%\appendixpage
+%\addcontentsline{toc}{chapter}{Appendix}
+%\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %\part has depth -1, \chapter 0, \section 1, and so on.
+%\input{appendix} 
+
+
+\printglossaries \addcontentsline{toc}{chapter}{Glossary}
+
+\clearpage
+
+\addcontentsline{toc}{chapter}{References}
+
+%\bibliographystyle{plain}
+%%% \bibliography{biophymd,biophyabbrev}
+\bibliography{\jobname}
+
+
+\end{document}
