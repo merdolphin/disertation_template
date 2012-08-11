@@ -1,4 +1,20 @@
-Thesis & Dissertation templates - NTU 
+Thesis & Dissertation templates 1.0 - NTU 
+
+##################### Description ######################
+# 	Thesis & Dissertation templates 1.0 - NTU
+#   
+#       Written by Zhao Li Na <lina.oahz@gmail.com>
+# 
+# This templeate in finished 83.11% based on the format 
+# requirement of the final thesis. Here I used some mature
+# packages to avoid building from scratch, the detail required 
+# package please see the following Requirement sections.
+# Please feel free to share, distribute this template,
+# your suggestions of improvement are welome.
+#
+#########################################################
+
+
 
 ==================================================
 		log
@@ -15,3 +31,10 @@ Thesis & Dissertation templates - NTU
 ===================================================
 ./remake-pdf.sh
 
+
+===================================================
+		Requirements
+===================================================
+Latex related Packages: See the dissertation.tex
+
+other related Packages: pdflatex; bibtex; bibdistill; makeglossaries;
