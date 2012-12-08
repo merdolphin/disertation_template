@@ -21,7 +21,7 @@
 \usepackage{microtype} 
 \usepackage{pdfpages}
 \usepackage{setspace}
-
+\usepackage{bibspacing} % set the reference entry to be singlespacing
 \usepackage{glossaries}
 \renewcommand*{\glossaryentrynumbers}[1]{} % To remove the page number
 \makeglossaries
@@ -79,11 +79,15 @@
 \include{nomenclature}
 
 \pagenumbering{arabic}
-\include{introduction}
+%\include{introduction}
 \include{ADintro}
+\include{toxicmech}
 \include{aggregation}
-\include{summary}
-\include{appendix}
+%\include{curcumin}
+%\include{heme}
+%\include{s100a9}
+%\include{summary}
+%\include{appendix}
 %\appendix 
 %\addappheadtotoc
 %\appendixpage
@@ -98,9 +102,13 @@
 
 \addcontentsline{toc}{chapter}{References}
 
+\renewcommand{\bibfont}{\small}
+\begin{spacing}{0.9}
+
+\setlength{\bibspacing}{\baselineskip}
 %\bibliographystyle{plain}
 %%% \bibliography{biophymd,biophyabbrev}
 \bibliography{\jobname}
-
+\end{spacing}
 
 \end{document}
