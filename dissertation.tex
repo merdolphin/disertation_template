@@ -63,6 +63,7 @@
 
 \newcommand*\chaptertoc[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
 
+\renewcommand{\thefootnote}{\alph{footnote}}
 
 \makeatletter
 \newcommand*{\citenst}[2][]{%
@@ -79,6 +80,31 @@
 }
 \makeatother
 
+
+\makeatletter
+\let\orig@chapter\@chapter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect Chapter \numberline{\thechapter :}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\makeatother
 
 
 
@@ -105,11 +131,15 @@
 \include{introduction}
 \include{ADintro}
 \include{toxicmech}
-%\include{aggregation}
+\include{aggregation}
 %\include{curcumin}
 %\include{heme}
 %\include{s100a9}
 %\include{summary}
+
+\makeatletter
+\let\@chapter\orig@chapter
+\makeatother
 
 \input{appendix}
 %%\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %\part has depth -1, \chapter 0, \section 1, and so on.(suck the figures)
